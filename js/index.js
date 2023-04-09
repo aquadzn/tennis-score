@@ -73,7 +73,7 @@ $(document).ready(function () {
     players: ["Player 1", "Player 2"],
   };
 
-  for (matchState.games = []; matchState.games.push([0, 0]) <= 5; );
+  for (matchState.games = []; matchState.games.push([0, 0]) <= 5;);
   for (
     matchState.tieBreakerScore = [];
     matchState.tieBreakerScore.push([0, 0]) <= 5;
@@ -118,7 +118,7 @@ $(document).ready(function () {
           latestEvent: { level: 0, text: "Match just started!" },
           wonSets: [],
         };
-        for (matchState.games = []; matchState.games.push([0, 0]) <= 5; );
+        for (matchState.games = []; matchState.games.push([0, 0]) <= 5;);
         for (
           matchState.tieBreakerScore = [];
           matchState.tieBreakerScore.push([0, 0]) <= 5;
@@ -294,20 +294,20 @@ $(document).ready(function () {
     fadeHtml(
       "#p1set" + parseInt(set + 1),
       matchState.games[set][0] +
-        (showTieBreakerScore
-          ? "<sup>" +
-            matchState.tieBreakerScore[matchState.currentSet][0] +
-            "</sup>"
-          : "")
+      (showTieBreakerScore
+        ? "<sup>" +
+        matchState.tieBreakerScore[matchState.currentSet][0] +
+        "</sup>"
+        : "")
     );
     fadeHtml(
       "#p2set" + parseInt(set + 1),
       matchState.games[set][1] +
-        (showTieBreakerScore
-          ? "<sup>" +
-            matchState.tieBreakerScore[matchState.currentSet][1] +
-            "</sup>"
-          : "")
+      (showTieBreakerScore
+        ? "<sup>" +
+        matchState.tieBreakerScore[matchState.currentSet][1] +
+        "</sup>"
+        : "")
     );
   }
 
@@ -343,10 +343,10 @@ $(document).ready(function () {
       matchState.tieBreakerScore[matchState.currentSet][winningPlayer]++;
       if (
         matchState.tieBreakerScore[matchState.currentSet][winningPlayer] >=
-          matchConfig.tieBreakerPoints &&
+        matchConfig.tieBreakerPoints &&
         matchState.tieBreakerScore[matchState.currentSet][winningPlayer] -
-          matchState.tieBreakerScore[matchState.currentSet][losingPlayer] >=
-          2
+        matchState.tieBreakerScore[matchState.currentSet][losingPlayer] >=
+        2
       ) {
         playerWinsSet(winningPlayer);
       }
@@ -378,6 +378,13 @@ $(document).ready(function () {
 
   function playerWinsGame(winningPlayer) {
     var losingPlayer = (winningPlayer + 1) % 2;
+    if ($('#p1name').hasClass('underline')) {
+      $('#p1name').removeClass('underline');
+      $('#p2name').addClass('underline');
+    } else {
+      $('#p2name').removeClass('underline');
+      $('#p1name').addClass('underline');
+    }
 
     matchState.points[0] = 0;
     matchState.points[1] = 0;
@@ -391,15 +398,15 @@ $(document).ready(function () {
       // oponent will have at least 2 games difference
       if (
         matchState.games[matchState.currentSet][winningPlayer] -
-          matchState.games[matchState.currentSet][losingPlayer] >=
+        matchState.games[matchState.currentSet][losingPlayer] >=
         2
       )
         playerWinsSet(winningPlayer);
       else if (
         matchState.games[matchState.currentSet][winningPlayer] ==
-          matchConfig.gamesPerSet &&
+        matchConfig.gamesPerSet &&
         matchState.games[matchState.currentSet][losingPlayer] ==
-          matchConfig.gamesPerSet
+        matchConfig.gamesPerSet
       )
         matchState.tieBreakerActive[matchState.currentSet] = true;
     }
@@ -415,9 +422,9 @@ $(document).ready(function () {
     matchState.playerSetsWon[winningPlayer]++;
     matchState.wonSets.push(
       "#p" +
-        parseInt(winningPlayer + 1) +
-        "set" +
-        parseInt(matchState.currentSet + 1)
+      parseInt(winningPlayer + 1) +
+      "set" +
+      parseInt(matchState.currentSet + 1)
     );
     if (matchState.playerSetsWon[winningPlayer] == (matchConfig.sets + 1) / 2) {
       matchState.winner = winningPlayer;

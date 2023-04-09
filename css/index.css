@@ -33,3 +33,24 @@ select.form-control {
 .mb-2 {
   margin-bottom: 10px;
 }
+
+#scoreTable td {
+	background-color: indigo;
+	color: yellow;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 700;
+}
+
+#p1name, #p2name {
+	color: whitesmoke !important;
+	font-weight: 900 !important;
+}
+
+#p1points, #p2points {
+	color: whitesmoke !important;
+	font-weight: 400 !important;
+}
+
+.underline {
+    text-decoration: underline;
+}
